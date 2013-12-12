@@ -24,13 +24,21 @@ Or
     client.update_user(id, options)
     client.create_user(options)
 
-## Projects
+## time_entrys
 
     client.get_projects(options)
     client.show_project(id, options)
     client.update_project(id, options)
     client.create_project(options)
     client.delete_project(id, options)
+
+## Time Entries
+
+    client.get_time_entries(user_id, options)
+    client.show_time_entry(id, user_id, options)
+    client.update_time_entry(id,user_id, options)
+    client.create_time_entry(user_id, options)
+    client.delete_time_entry(id, user_id, project_id, options)
 
 ## Contributing
 

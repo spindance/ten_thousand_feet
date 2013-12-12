@@ -1,7 +1,9 @@
+require 'json'
+require 'rest-client'
+
 require 'ten_thousand_feet/api/users'
 require 'ten_thousand_feet/api/projects'
-require 'rest-client'
-require 'json'
+require 'ten_thousand_feet/api/time_entries'
 
 module TenThousandFeet
   class Client
@@ -10,6 +12,7 @@ module TenThousandFeet
 
     include API::Users
     include API::Projects
+    include API::TimeEntries
     
     def initialize(options={})
       @auth = options[:auth]
