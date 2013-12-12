@@ -24,7 +24,7 @@ Or
     client.update_user(id, options)
     client.create_user(options)
 
-## time_entrys
+## Projects
 
     client.get_projects(options)
     client.show_project(id, options)
