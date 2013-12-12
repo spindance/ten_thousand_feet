@@ -4,14 +4,33 @@ Ruby wrapper for the [10,000ft API (BETA)](http://10kft.github.io/api-documentat
 
 ## Installation
 
-    gem install 'ten_thousand_feet'
+    gem 'ten_thousand_feet'
 
-## Usage
+Or
+
+    gem install ten_thousand_feet
+
+## Setup
 
     require 'ten_thousand_feet'
 
     # Initialize a new 10,000ft client
     client = TenThousandFeet.new(auth: YOUR_AUTH_TOKEN)
+
+## Users
+
+    client.get_users(options)
+    client.show_user(id, options)
+    client.update_user(id, options)
+    client.create_user(options)
+
+## Projects
+
+    client.get_projects(options)
+    client.show_project(id, options)
+    client.update_project(id, options)
+    client.create_project(options)
+    client.delete_project(id, options)
 
 ## Contributing
 
