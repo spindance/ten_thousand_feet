@@ -2,22 +2,20 @@ module TenThousandFeet
   module API
     module Users
 
-      def get_users
-        get("/users", { auth: self.auth })
+      def get_users(options={})
+        get("/users", options)
       end
 
-      def show_user(id)
-        get("/users/#{id}", { auth: self.auth })
+      def show_user(id, options={})
+        get("/users/#{id}", options)
       end
 
       def create_user(options={})
-        default_options = { auth: self.auth }
-        post("/users/", default_options.merge(options))
+        post("/users", options)
       end
 
       def update_user(id, options={})
-        default_options = { auth: self.auth }
-        put("/users/#{id}", default_options.merge(options))
+        put("/users/#{id}", options)
       end
     
     end
