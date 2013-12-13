@@ -5,6 +5,7 @@ require 'ten_thousand_feet/api/users'
 require 'ten_thousand_feet/api/phases'
 require 'ten_thousand_feet/api/projects'
 require 'ten_thousand_feet/api/user_status'
+require 'ten_thousand_feet/api/assignments'
 require 'ten_thousand_feet/api/time_entries'
 
 module TenThousandFeet
@@ -16,6 +17,7 @@ module TenThousandFeet
     include API::Phases
     include API::Projects
     include API::UserStatus
+    include API::Assignments
     include API::TimeEntries
     
     def initialize(options={})

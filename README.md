@@ -26,8 +26,15 @@ Or
 
 ## User Status
 
-    client.get_user_statuses(user_id, options={})
-    client.create_user_status(user_id, options={})
+    client.get_user_statuses(user_id, options)
+    client.create_user_status(user_id, options)
+
+## Assignments
+    
+    client.get_assignments(user_id, options)
+    client.show_assignment(assignment_id, user_id, options)
+    client.create_assignment(project_id, user_id, options)
+    client.delete_assignment(assignment_id, user_id, options)
 
 ## Projects
 
