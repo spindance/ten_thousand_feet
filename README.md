@@ -18,17 +18,18 @@ Or
     client = TenThousandFeet.new(auth: YOUR_AUTH_TOKEN)
 
 # API Methods
-    # Note: 'options' will be different for each method.
-    # Check the official API documentation for a list of
-    # available options for each call.
+Note: 'options' will be different for each method. Check the official API documentation for a list of available options for each call.
 
-    # 'options' should be passed in as a hash:
+'options' should be passed in as a hash:
+
     # user_id = 1969
+    #
     # options = {
     #   first_name:   'Austin',
     #   last_name:    'Powers',
     #   display_name: 'Austin Danger Powers'
     # }
+    #
     # client.update_user(user_id, options)
 
 ## Users
