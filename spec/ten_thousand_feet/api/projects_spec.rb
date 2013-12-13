@@ -80,6 +80,15 @@ module TenThousandFeet
           end
         end
       end
+
+      describe '#get_project_time_entries' do
+        it 'retrieves a list of time entries for a given project' do
+          VCR.use_cassette('get_project_time_entries') do
+            response = client.get_project_time_entries(id)
+            expect(response['data']).to_not be_nil
+          end
+        end
+      end
     end
   end
 end

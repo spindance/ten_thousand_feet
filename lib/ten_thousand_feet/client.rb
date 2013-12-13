@@ -3,6 +3,7 @@ require 'rest-client'
 
 require 'ten_thousand_feet/api/users'
 require 'ten_thousand_feet/api/projects'
+require 'ten_thousand_feet/api/user_status'
 require 'ten_thousand_feet/api/time_entries'
 
 module TenThousandFeet
@@ -12,6 +13,7 @@ module TenThousandFeet
 
     include API::Users
     include API::Projects
+    include API::UserStatus
     include API::TimeEntries
     
     def initialize(options={})
@@ -23,7 +25,7 @@ module TenThousandFeet
     end
 
     def default_options
-      { auth: self.auth }
+      { auth: @auth }
     end
 
     def get(path, options = {})
