@@ -1,3 +1,3 @@
 module TenThousandFeet
-  VERSION = "0.0.111"
+  VERSION = "0.0.2"
 end
