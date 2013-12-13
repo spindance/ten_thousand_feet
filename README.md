@@ -17,6 +17,12 @@ Or
     # Initialize a new 10,000ft client
     client = TenThousandFeet.new(auth: YOUR_AUTH_TOKEN)
 
+# API Methods
+    # Note: 'options' will be different for each method. Check the official API documentation for details on the available options for each call.
+
+    # 'options' should be passed in as a hash:
+    # { name: 'Austin Powers', client: 'Dr. Evil' }
+
 ## Users
 
     client.get_users(options)
@@ -59,6 +65,13 @@ Or
     client.update_time_entry(time_entry_id, user_id, options)
     client.create_time_entry(user_id, options)
     client.delete_time_entry(time_entry_id, user_id, project_id, options)
+
+## To-Do
+
+* Budget Items
+* Budget Item Categories
+* Tags Per Project
+* Tags Per User
 
 ## Contributing
 
