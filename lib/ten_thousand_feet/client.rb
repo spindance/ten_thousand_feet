@@ -2,6 +2,7 @@ require 'json'
 require 'rest-client'
 
 require 'ten_thousand_feet/api/users'
+require 'ten_thousand_feet/api/phases'
 require 'ten_thousand_feet/api/projects'
 require 'ten_thousand_feet/api/user_status'
 require 'ten_thousand_feet/api/time_entries'
@@ -12,6 +13,7 @@ module TenThousandFeet
     attr_reader :auth
 
     include API::Users
+    include API::Phases
     include API::Projects
     include API::UserStatus
     include API::TimeEntries

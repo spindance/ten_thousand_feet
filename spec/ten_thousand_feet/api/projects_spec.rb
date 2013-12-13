@@ -89,6 +89,15 @@ module TenThousandFeet
           end
         end
       end
+
+      describe '#get_project_time_users' do
+        it 'retrieves a list of users for a given project' do
+          VCR.use_cassette('get_project_time_users') do
+            response = client.get_project_users(id)
+            expect(response['data']).to_not be_nil
+          end
+        end
+      end
     end
   end
 end

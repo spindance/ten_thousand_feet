@@ -23,7 +23,11 @@ module TenThousandFeet
       end
 
       def get_project_time_entries(id, options={})
-        get("/projects/#{id}/time_entries")
+        get("/projects/#{id}/time_entries", options)
+      end
+
+      def get_project_users(id, options={})
+        get("/projects/#{id}/users", options)
       end
     
     end

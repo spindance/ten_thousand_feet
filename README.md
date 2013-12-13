@@ -27,7 +27,7 @@ Or
 ## User Status
 
     client.get_user_statuses(user_id, options={})
-    client.create_user_statuses(user_id, options={})
+    client.create_user_status(user_id, options={})
 
 ## Projects
 
@@ -37,6 +37,13 @@ Or
     client.create_project(options)
     client.delete_project(project_id, options)
     client.get_project_time_entries(project_id, options)
+    client.get_project_users(project_id, options)
+
+## Phases
+    
+    client.get_phases(project_id, options)
+    client.create_phases(project_id, options)
+    client.update_phases(project_id, phase_id, options)
 
 ## Time Entries
 
