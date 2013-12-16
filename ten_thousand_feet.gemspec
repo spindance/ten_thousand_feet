@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["susskyle@gmail.com"]
   spec.description   = %q{The 10,000ft Ruby API Client}
   spec.summary       = %q{Provides Ruby wrappers for the 10,000ft API.}
-  spec.homepage      = "http://tackmobile.com"
+  spec.homepage      = "https://github.com/TackMobile/ten_thousand_feet"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split($/)
