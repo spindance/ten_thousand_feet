@@ -32,30 +32,49 @@ module TenThousandFeet
       { auth: @auth }
     end
 
+    def query_string(options)
+      nodes  = (options.count - 1)
+      params = "?"
+
+      options.each_with_index do |(key, value), index|
+        if index == nodes
+          params += key.to_s + "=" + value
+        else
+          params += key.to_s + "=" + value + "&"
+        end
+      end
+
+      params
+    end
+
+    def full_url(path, options)
+      if options.empty?
+        api_url + path
+      else
+        api_url + path + query_string(options)
+      end
+    end
+
     def get(path, options = {})
-      params   = default_options.merge(options)
-      response = RestClient.get(api_url + path, params)
+      response = RestClient.get(full_url(path, options), default_options)
 
       JSON.parse(response)
     end
 
     def post(path, options = {})
-      params   = default_options.merge(options)
-      response = RestClient.post(api_url + path, params)
+      response = RestClient.post(full_url(path, options), default_options)
 
       JSON.parse(response)
     end
 
     def put(path, options = {})
-      params   = default_options.merge(options)
-      response = RestClient.put(api_url + path, params)
+      response = RestClient.put(full_url(path, options), default_options)
 
       JSON.parse(response)
     end
 
     def delete(path, options = {})
-      params   = default_options.merge(options)
-      RestClient.delete(api_url + path, params)
+      RestClient.delete(full_url(path, options), default_options)
     end
   end
 end
