@@ -25,7 +25,7 @@ module TenThousandFeet
     end
 
     def api_url
-      "https://pre-prod-api.10000ft.com/api/v1"
+      "https://api.10000ft.com/api/v1"
     end
 
     def default_options
