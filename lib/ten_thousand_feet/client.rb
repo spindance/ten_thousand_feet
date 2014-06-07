@@ -12,6 +12,7 @@ module TenThousandFeet
   class Client
 
     attr_reader :auth
+    attr_reader :api_url
 
     include API::Users
     include API::Phases
@@ -22,10 +23,7 @@ module TenThousandFeet
     
     def initialize(options={})
       @auth = options[:auth]
-    end
-
-    def api_url
-      "https://api.10000ft.com/api/v1"
+      @api_url options[:api_url] || "https://api.10000ft.com/api/v1"
     end
 
     def default_options
