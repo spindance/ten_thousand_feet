@@ -23,7 +23,7 @@ module TenThousandFeet
     
     def initialize(options={})
       @auth = options[:auth]
-      @api_url options[:api_url] || "https://api.10000ft.com/api/v1"
+      @api_url = options[:api_url] || "https://api.10000ft.com/api/v1"
     end
 
     def default_options
