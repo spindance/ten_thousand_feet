@@ -55,25 +55,25 @@ module TenThousandFeet
     end
 
     def get(path, options = {})
-      response = RestClient.get(full_url(path, options), default_options)
+      response = RestClient.get(full_url(path, default_options), options)
 
       JSON.parse(response)
     end
 
     def post(path, options = {})
-      response = RestClient.post(full_url(path, options), default_options)
+      response = RestClient.post(full_url(path, default_options), options)
 
       JSON.parse(response)
     end
 
     def put(path, options = {})
-      response = RestClient.put(full_url(path, options), default_options)
+      response = RestClient.put(full_url(path, default_options), options)
 
       JSON.parse(response)
     end
 
     def delete(path, options = {})
-      RestClient.delete(full_url(path, options), default_options)
+      RestClient.delete(full_url(path, default_options), options)
     end
   end
 end
