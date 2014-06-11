@@ -1,5 +1,6 @@
 require 'json'
 require 'rest-client'
+require 'uri'
 
 require 'ten_thousand_feet/api/users'
 require 'ten_thousand_feet/api/phases'
@@ -36,9 +37,9 @@ module TenThousandFeet
 
       options.each_with_index do |(key, value), index|
         if index == nodes
-          params += key.to_s + "=" + value
+          params += key.to_s + "=" + URI.encode(value)
         else
-          params += key.to_s + "=" + value + "&"
+          params += key.to_s + "=" + URI.encode(value) + "&"
         end
       end
 
