@@ -1,5 +1,6 @@
 require 'json'
 require 'rest-client'
+require 'uri'
 
 require 'ten_thousand_feet/api/users'
 require 'ten_thousand_feet/api/phases'
@@ -12,6 +13,7 @@ module TenThousandFeet
   class Client
 
     attr_reader :auth
+    attr_reader :api_url
 
     include API::Users
     include API::Phases
@@ -22,10 +24,7 @@ module TenThousandFeet
     
     def initialize(options={})
       @auth = options[:auth]
-    end
-
-    def api_url
-      "https://api.10000ft.com/api/v1"
+      @api_url = options[:api_url] || "https://api.10000ft.com/api/v1"
     end
 
     def default_options
@@ -38,9 +37,9 @@ module TenThousandFeet
 
       options.each_with_index do |(key, value), index|
         if index == nodes
-          params += key.to_s + "=" + value
+          params += key.to_s + "=" + URI.encode(value)
         else
-          params += key.to_s + "=" + value + "&"
+          params += key.to_s + "=" + URI.encode(value) + "&"
         end
       end
 
@@ -56,25 +55,25 @@ module TenThousandFeet
     end
 
     def get(path, options = {})
-      response = RestClient.get(full_url(path, options), default_options)
+      response = RestClient.get(full_url(path, default_options), options)
 
       JSON.parse(response)
     end
 
     def post(path, options = {})
-      response = RestClient.post(full_url(path, options), default_options)
+      response = RestClient.post(full_url(path, default_options), options)
 
       JSON.parse(response)
     end
 
     def put(path, options = {})
-      response = RestClient.put(full_url(path, options), default_options)
+      response = RestClient.put(full_url(path, default_options), options)
 
       JSON.parse(response)
     end
 
     def delete(path, options = {})
-      RestClient.delete(full_url(path, options), default_options)
+      RestClient.delete(full_url(path, default_options), options)
     end
   end
 end

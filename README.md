@@ -17,6 +17,9 @@ Or
     # Initialize a new 10,000ft client
     client = TenThousandFeet.new(auth: YOUR_AUTH_TOKEN)
 
+    # If you are using a sandbox environment you can optionally specify the sandbox URL
+    client = TenThousandFeet.new(auth: YOUR_AUTH_TOKEN, api_url: https://vnext-api.10000ft.com/api/v1)
+
 # API Methods
 Note: 'options' will be different for each method. Check the official API documentation for a list of available options for each call.
 
