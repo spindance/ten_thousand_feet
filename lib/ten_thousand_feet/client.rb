@@ -46,7 +46,7 @@ module TenThousandFeet
       params
     end
 
-    def full_url(path, options)
+    def full_url(path, options = {})
       if options.empty?
         api_url + path
       else
