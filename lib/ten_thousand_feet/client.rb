@@ -55,7 +55,7 @@ module TenThousandFeet
     end
 
     def get(path, options = {})
-      response = RestClient.get(full_url(path, default_options), options)
+      response = RestClient.get(full_url(path), {params: default_options.merge(options) })
 
       JSON.parse(response)
     end
