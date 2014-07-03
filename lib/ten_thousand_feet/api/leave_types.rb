@@ -1,8 +1,8 @@
 module TenThousandFeet
-	module API
+  module API
     module LeaveTypes
 
-    	def get_leave_types(options={})
+      def get_leave_types(options={})
         get("/leave_types", options)
       end
 
