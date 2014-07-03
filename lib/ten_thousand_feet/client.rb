@@ -8,6 +8,7 @@ require 'ten_thousand_feet/api/projects'
 require 'ten_thousand_feet/api/user_status'
 require 'ten_thousand_feet/api/assignments'
 require 'ten_thousand_feet/api/time_entries'
+require 'ten_thousand_feet/api/leave_types'
 
 module TenThousandFeet
   class Client
@@ -21,6 +22,7 @@ module TenThousandFeet
     include API::UserStatus
     include API::Assignments
     include API::TimeEntries
+    include API::LeaveTypes
     
     def initialize(options={})
       @auth = options[:auth]
