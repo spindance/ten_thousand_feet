@@ -1,6 +1,6 @@
 # TenThousandFeet
 
-Ruby wrapper for the [10,000ft API (BETA)](http://10kft.github.io/api-documentation).
+Ruby wrapper for the [10,000ft API](http://10kft.github.io/api-documentation).
 
 ## Installation
 
@@ -77,6 +77,11 @@ Note: 'options' will be different for each method. Check the official API docume
     client.update_time_entry(time_entry_id, user_id, options)
     client.create_time_entry(user_id, options)
     client.delete_time_entry(time_entry_id, user_id, project_id, options)
+
+## Leave Types
+
+    client.get_leave_types(options)
+    client.show_leave_types(leave_type_id, options)
 
 ## To-Do
 
