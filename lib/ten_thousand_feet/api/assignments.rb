@@ -10,7 +10,7 @@ module TenThousandFeet
         get("/users/#{user_id}/assignments/#{id}", options)
       end
 
-      def create_assignment(project_id, user_id, options={})
+      def create_assignment(user_id, options={})
         post("/users/#{user_id}/assignments", options)
       end
 
