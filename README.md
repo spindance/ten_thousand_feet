@@ -51,7 +51,7 @@ Note: 'options' will be different for each method. Check the official API docume
     
     client.get_assignments(user_id, options)
     client.show_assignment(assignment_id, user_id, options)
-    client.create_assignment(project_id, user_id, options)
+    client.create_assignment(user_id, options)
     client.delete_assignment(assignment_id, user_id, options)
 
 ## Projects
