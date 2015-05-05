@@ -71,6 +71,15 @@ module TenThousandFeet
           end
         end
       end
+
+      describe '#get_all_time_entries' do
+        it 'retrieves all time entries' do
+          VCR.use_cassette('get_all_time_entries') do
+            hours  = time_entries['data'][0]['hours']
+            expect(hours).to_not be_nil
+          end
+        end
+      end
     end
   end
 end
