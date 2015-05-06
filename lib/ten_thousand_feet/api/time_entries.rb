@@ -21,7 +21,11 @@ module TenThousandFeet
       def delete_time_entry(id, user_id, project_id, options={})
         delete("projects/#{project_id}/users/#{user_id}/time_entries/#{id}", options)
       end
-    
+
+      def get_all_time_entries(options={})
+        get('/time_entries', options)
+      end
+
     end
   end
 end

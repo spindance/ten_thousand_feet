@@ -77,6 +77,7 @@ Note: 'options' will be different for each method. Check the official API docume
     client.update_time_entry(time_entry_id, user_id, options)
     client.create_time_entry(user_id, options)
     client.delete_time_entry(time_entry_id, user_id, project_id, options)
+    client.get_all_time_entries(options)
 
 ## Leave Types
 
