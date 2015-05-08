@@ -9,6 +9,7 @@ require 'ten_thousand_feet/api/user_status'
 require 'ten_thousand_feet/api/assignments'
 require 'ten_thousand_feet/api/time_entries'
 require 'ten_thousand_feet/api/leave_types'
+require 'ten_thousand_feet/api/bill_rates'
 
 module TenThousandFeet
   class Client
@@ -23,10 +24,11 @@ module TenThousandFeet
     include API::Assignments
     include API::TimeEntries
     include API::LeaveTypes
+    include API::BillRates
     
     def initialize(options={})
       @auth = options[:auth]
-      @api_url = options[:api_url] || "https://api.10000ft.com/api/v1"
+      @api_url = options[:api_url] || "https://vnext.10000ft.com/api/v1"
     end
 
     def default_options
