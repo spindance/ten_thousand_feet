@@ -48,7 +48,7 @@ Note: 'options' will be different for each method. Check the official API docume
     client.create_user_status(user_id, options)
 
 ## Assignments
-    
+
     client.get_assignments(user_id, options)
     client.show_assignment(assignment_id, user_id, options)
     client.create_assignment(user_id, options)
@@ -65,7 +65,7 @@ Note: 'options' will be different for each method. Check the official API docume
     client.get_project_users(project_id, options)
 
 ## Phases
-    
+
     client.get_phases(project_id, options)
     client.create_phases(project_id, options)
     client.update_phases(project_id, phase_id, options)
@@ -83,6 +83,11 @@ Note: 'options' will be different for each method. Check the official API docume
 
     client.get_leave_types(options)
     client.show_leave_types(leave_type_id, options)
+
+## Bill Rates
+
+    client.get_bill_rate(project_id, bill_rate_id, options)
+    client.get_bill_rates(project_id, options)
 
 ## To-Do
 
