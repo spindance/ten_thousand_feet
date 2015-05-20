@@ -1,0 +1,14 @@
+Documentation:
+  Enabled: false
+
+LineLength:
+  Max: 120
+
+Style/FileName:
+  Enabled: false
+
+Metrics/AbcSize: # this appears to be broken
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 25

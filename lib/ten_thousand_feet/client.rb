@@ -13,7 +13,6 @@ require 'ten_thousand_feet/api/bill_rates'
 
 module TenThousandFeet
   class Client
-
     attr_reader :auth
     attr_reader :api_url
 
@@ -26,9 +25,9 @@ module TenThousandFeet
     include API::LeaveTypes
     include API::BillRates
 
-    def initialize(options={})
+    def initialize(options = {})
       @auth = options[:auth]
-      @api_url = options[:api_url] || "https://api.10000ft.com/api/v1"
+      @api_url = options[:api_url] || 'https://api.10000ft.com/api/v1'
     end
 
     def default_options
@@ -37,13 +36,13 @@ module TenThousandFeet
 
     def query_string(options)
       nodes  = (options.count - 1)
-      params = "?"
+      params = '?'
 
       options.each_with_index do |(key, value), index|
         if index == nodes
-          params += key.to_s + "=" + URI.encode(value)
+          params += "#{key}=#{URI.encode(value)}"
         else
-          params += key.to_s + "=" + URI.encode(value) + "&"
+          params += "#{key}=#{URI.encode(value)}&"
         end
       end
 
@@ -59,7 +58,7 @@ module TenThousandFeet
     end
 
     def get(path, options = {})
-      response = RestClient.get(full_url(path), {params: default_options.merge(options) })
+      response = RestClient.get(full_url(path), params: default_options.merge(options))
 
       JSON.parse(response)
     end
