@@ -3,9 +3,9 @@ require 'spec_helper'
 module TenThousandFeet
   module API
     describe Projects do
-      
-      let!(:client)    { TenThousandFeet.new({ auth: $AUTH }) }
-      let!(:projects)  { 
+
+      let!(:client)    { TenThousandFeet.new({ auth: ENV['auth'] }) }
+      let!(:projects)  {
         VCR.use_cassette('projects') do
           client.get_projects
         end

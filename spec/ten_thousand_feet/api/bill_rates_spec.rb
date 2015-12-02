@@ -4,7 +4,7 @@ module TenThousandFeet
   module API
     describe BillRates do
 
-      let!(:client)   { TenThousandFeet.new(auth: $AUTH) }
+      let!(:client)   { TenThousandFeet.new(auth: ENV['auth']) }
       let!(:projects) {
         VCR.use_cassette('projects') do
           client.get_projects

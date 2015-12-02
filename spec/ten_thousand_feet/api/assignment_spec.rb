@@ -3,16 +3,16 @@ require 'spec_helper'
 module TenThousandFeet
   module API
     describe Assignments do
-      
-      let!(:client)  { TenThousandFeet.new({ auth: $AUTH }) }
+
+      let!(:client)  { TenThousandFeet.new({ auth: ENV['auth'] }) }
       let!(:user)    { client.get_users['data'][0] }
-      let!(:projects)  { 
+      let!(:projects)  {
         VCR.use_cassette('projects') do
           client.get_projects
         end
       }
       let!(:project)   { projects['data'][0] }
-      let!(:assignments)  { 
+      let!(:assignments)  {
         VCR.use_cassette('assignments') do
           client.get_assignments(user['id'])
         end

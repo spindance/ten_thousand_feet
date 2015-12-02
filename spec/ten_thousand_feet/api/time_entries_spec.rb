@@ -3,16 +3,16 @@ require 'spec_helper'
 module TenThousandFeet
   module API
     describe TimeEntries do
-      
-      let!(:client)  { TenThousandFeet.new({ auth: $AUTH }) }
+
+      let!(:client)  { TenThousandFeet.new({ auth: ENV['auth'] }) }
       let!(:user)    { client.get_users['data'][0] }
-      let!(:projects)  { 
+      let!(:projects)  {
         VCR.use_cassette('projects') do
           client.get_projects
         end
       }
       let!(:project)   { projects['data'][0] }
-      let!(:time_entries)  { 
+      let!(:time_entries)  {
         VCR.use_cassette('time_entries') do
           client.get_time_entries(user['id'])
         end

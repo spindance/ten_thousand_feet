@@ -3,9 +3,9 @@ require 'spec_helper'
 module TenThousandFeet
   module API
     describe Users do
-      
-      let!(:client) { TenThousandFeet.new({ auth: $AUTH }) }
-      let!(:users)  { 
+
+      let!(:client) { TenThousandFeet.new({ auth: ENV['auth'] }) }
+      let!(:users)  {
         VCR.use_cassette('users') do
           client.get_users
         end
