@@ -3,20 +3,19 @@ require 'spec_helper'
 module TenThousandFeet
   module API
     describe Users do
-
-      let!(:client) { TenThousandFeet.new({ auth: ENV['auth'] }) }
-      let!(:users)  {
+      let!(:client) { TenThousandFeet.new auth: ENV['auth'] }
+      let!(:users) do
         VCR.use_cassette('users') do
           client.get_users
         end
-      }
-      let!(:user)   { users['data'][0] }
-      let!(:id)     { user['id'] }
+      end
+      let!(:user) { users['data'][0] }
+      let!(:id) { user['id'] }
 
       describe '#get_users' do
         it 'retrieves a list of users' do
           VCR.use_cassette('get_users') do
-            name  = users['data'][0]['first_name']
+            name = users['data'][0]['first_name']
             expect(name).to_not be_nil
           end
         end
@@ -44,12 +43,12 @@ module TenThousandFeet
         it 'creates a new user' do
           VCR.use_cassette('create_user') do
             user_count_before = users['data'].count
-            response = client.create_user(user_attributes)
+            client.create_user(user_attributes)
 
-            new_users  = client.get_users
+            new_users = client.get_users
             user_count_after = new_users['data'].count
 
-            expect(user_count_after).to eq (user_count_before + 1)
+            expect(user_count_after).to eq user_count_before + 1
           end
         end
       end
@@ -57,8 +56,8 @@ module TenThousandFeet
       describe '#update_user' do
         context 'given a valid user' do
           it 'updates an attribute for the user' do
-            name  = "AustinPowers#{rand(0..100)}"
-            response = client.update_user(id, { first_name: name })
+            name = "AustinPowers#{rand(0..100)}"
+            response = client.update_user(id, first_name: name)
             expect(response['first_name']).to eq name
           end
         end
