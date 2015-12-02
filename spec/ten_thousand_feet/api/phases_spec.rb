@@ -3,13 +3,12 @@ require 'spec_helper'
 module TenThousandFeet
   module API
     describe Phases do
-
-      let!(:client)    { TenThousandFeet.new({ auth: ENV['auth'] }) }
-      let!(:projects)  {
+      let!(:client) { TenThousandFeet.new auth: ENV['auth'] }
+      let!(:projects) do
         VCR.use_cassette('projects') do
           client.get_projects
         end
-      }
+      end
       let!(:project)   { projects['data'][0] }
       let!(:id)        { project['id'] }
 
@@ -33,8 +32,8 @@ module TenThousandFeet
 
         it 'creates a new phase for a given project' do
           VCR.use_cassette('create_phase') do
-            response = client.create_phase(id, phase_attributes)
-            phase    = client.get_phases(id)
+            client.create_phase(id, phase_attributes)
+            phase = client.get_phases(id)
             expect(phase['data'][0]['phase_name']).to eq phase_attributes[:phase_name]
           end
         end
@@ -52,7 +51,7 @@ module TenThousandFeet
         it 'updates a given phases attributes' do
           phase       = client.create_phase(id, phase_attributes)
           phase_name  = "#{rand(0..100)} So Groovy"
-          response    = client.update_phase(id, phase['id'], { phase_name: phase_name })
+          response    = client.update_phase(id, phase['id'], phase_name: phase_name)
           expect(response['phase_name']).to eq phase_name
         end
       end
