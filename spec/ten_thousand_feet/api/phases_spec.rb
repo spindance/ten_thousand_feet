@@ -3,7 +3,7 @@ require 'spec_helper'
 module TenThousandFeet
   module API
     describe Phases do
-      let!(:client) { TenThousandFeet.new auth: ENV['auth'] }
+      let!(:client) { TenThousandFeet.new auth: ENV['AUTH'] }
       let!(:projects) do
         VCR.use_cassette('projects') do
           client.get_projects

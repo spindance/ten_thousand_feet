@@ -3,7 +3,7 @@ require 'spec_helper'
 module TenThousandFeet
   module API
     describe TimeEntries do
-      let!(:client) { TenThousandFeet.new auth: ENV['auth'] }
+      let!(:client) { TenThousandFeet.new auth: ENV['AUTH'] }
       let!(:user) { client.get_users['data'][0] }
       let!(:projects) do
         VCR.use_cassette('projects') do

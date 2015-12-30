@@ -3,7 +3,7 @@ require 'spec_helper'
 module TenThousandFeet
   module API
     describe UserStatus do
-      let!(:client) { TenThousandFeet.new auth: ENV['auth'] }
+      let!(:client) { TenThousandFeet.new auth: ENV['AUTH'] }
       let!(:users) do
         VCR.use_cassette('users') do
           client.get_users

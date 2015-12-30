@@ -6,7 +6,7 @@ require 'vcr'
 require 'webmock'
 require 'dotenv'
 
-Dotenv.load 'config.env'
+Dotenv.load '.env.test'
 VCR.configure do |c|
   c.cassette_library_dir = 'fixtures/vcr_cassettes'
   c.hook_into :webmock

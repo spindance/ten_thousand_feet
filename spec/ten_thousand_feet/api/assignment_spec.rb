@@ -3,7 +3,7 @@ require 'spec_helper'
 module TenThousandFeet
   module API
     describe Assignments do
-      let!(:client)  { TenThousandFeet.new auth: ENV['auth'] }
+      let!(:client)  { TenThousandFeet.new auth: ENV['AUTH'] }
       let!(:user)    { client.get_users['data'][0] }
       let!(:projects) do
         VCR.use_cassette('projects') do
@@ -49,7 +49,7 @@ module TenThousandFeet
         it 'creates a new assignment' do
           VCR.use_cassette('create_assignment') do
             assignment_count_before = assignments['data'].count
-            client.create_assignment(project['id'], user['id'], assignment_attributes)
+            client.create_assignment(user['id'], assignment_attributes)
 
             new_assignments = client.get_assignments(user['id'])
             assignment_count_after = new_assignments['data'].count
