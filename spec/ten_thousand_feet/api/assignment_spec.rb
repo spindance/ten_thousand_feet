@@ -3,22 +3,21 @@ require 'spec_helper'
 module TenThousandFeet
   module API
     describe Assignments do
-      
-      let!(:client)  { TenThousandFeet.new({ auth: $AUTH }) }
+      let!(:client)  { TenThousandFeet.new auth: ENV['AUTH'] }
       let!(:user)    { client.get_users['data'][0] }
-      let!(:projects)  { 
+      let!(:projects) do
         VCR.use_cassette('projects') do
           client.get_projects
         end
-      }
-      let!(:project)   { projects['data'][0] }
-      let!(:assignments)  { 
+      end
+      let!(:project) { projects['data'][0] }
+      let!(:assignments) do
         VCR.use_cassette('assignments') do
           client.get_assignments(user['id'])
         end
-      }
-      let!(:assignment)   { assignments['data'][0] }
-      let!(:id)           { assignment['id'] }
+      end
+      let!(:assignment) { assignments['data'][0] }
+      let!(:id) { assignment['id'] }
 
       describe '#get_assignments' do
         it 'retrieves a list of assignments for a user' do
@@ -50,12 +49,12 @@ module TenThousandFeet
         it 'creates a new assignment' do
           VCR.use_cassette('create_assignment') do
             assignment_count_before = assignments['data'].count
-            response = client.create_assignment(project['id'], user['id'], assignment_attributes)
+            client.create_assignment(user['id'], assignment_attributes)
 
-            new_assignments  = client.get_assignments(user['id'])
+            new_assignments = client.get_assignments(user['id'])
             assignment_count_after = new_assignments['data'].count
 
-            expect(assignment_count_after).to eq (assignment_count_before + 1)
+            expect(assignment_count_after).to eq assignment_count_before + 1
           end
         end
       end
@@ -64,7 +63,7 @@ module TenThousandFeet
         context 'given a valid time entry' do
           it 'deletes the assignment' do
             VCR.use_cassette('delete_assignment') do
-              response = client.delete_assignment(id, user['id'])
+              client.delete_assignment(id, user['id'])
             end
           end
         end

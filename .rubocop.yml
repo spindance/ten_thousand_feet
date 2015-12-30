@@ -1,14 +1,12 @@
-Documentation:
+AllCops:
+  RunRailsCops: true
+Style/Documentation:
   Enabled: false
-
-LineLength:
+Style/DoubleNegation:
+  Enabled: false
+Metrics/AbcSize:
+  Max: 20
+Metrics/LineLength:
   Max: 120
-
-Style/FileName:
-  Enabled: false
-
-Metrics/AbcSize: # this appears to be broken
-  Enabled: false
-
 Metrics/MethodLength:
-  Max: 25
+  Max: 20

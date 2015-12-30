@@ -3,19 +3,18 @@ require 'spec_helper'
 module TenThousandFeet
   module API
     describe BillRates do
-
-      let!(:client)   { TenThousandFeet.new(auth: $AUTH) }
-      let!(:projects) {
+      let!(:client) { TenThousandFeet.new(auth: ENV['AUTH']) }
+      let!(:projects) do
         VCR.use_cassette('projects') do
           client.get_projects
         end
-      }
+      end
       let!(:project) { projects['data'][0] }
-      let!(:bill_rates) {
+      let!(:bill_rates) do
         VCR.use_cassette('get_bill_rates') do
           client.get_bill_rates(project['id'])
         end
-      }
+      end
       let!(:bill_rate) { bill_rates['data'][0] }
 
       describe '#get_bill_rates' do
@@ -37,7 +36,6 @@ module TenThousandFeet
           end
         end
       end
-
     end
   end
 end

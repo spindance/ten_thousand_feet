@@ -2,12 +2,11 @@ require 'pry'
 require 'rest-client'
 require 'ten_thousand_feet/client'
 require 'ten_thousand_feet'
-require 'yaml'
 require 'vcr'
 require 'webmock'
+require 'dotenv'
 
-$AUTH = YAML.load_file('auth.yml')
-
+Dotenv.load '.env.test'
 VCR.configure do |c|
   c.cassette_library_dir = 'fixtures/vcr_cassettes'
   c.hook_into :webmock
