@@ -1,10 +1,4 @@
 AllCops:
-  Exclude:
-    - bin/**/*
-    - db/**/*
-    # Because this below isn't under my control. toad.
-    - app/admin/**/*
-    - app/mailers/**/*
   RunRailsCops: true
 Style/Documentation:
   Enabled: false
